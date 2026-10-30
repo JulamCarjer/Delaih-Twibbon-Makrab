@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-Cache Tag untuk GitHub Pages -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Delaih Twibon</title>
+
+    <style>
+        /* =====================================================
+   RESET
+===================================================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Origin;
+            background: #f6f6f7;
+            color: #17171a;
+        }
+        /* =====================================================
+   VARIABLE
+===================================================== */
+        
+         :root {
+            --red: #000000;
+            --red-dark: #ffffff;
+            --black: #17171a;
+            --gray: #77777f;
+            --light: #f4f4f5;
+            --border: #e6e6e9;
+            --white: #ffffff;
+        }
+        /* =====================================================
+   NAVBAR
+===================================================== */
+        
+        .navbar {
+            width: 100%;
+            height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            height: 100%;
+            margin: auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--red);
+            color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+        }
+        
+        .brand-text strong {
+            display: block;
+            font-size: 14px;
+        }
+        
+        .brand-text span {
+            display: block;
+            color: var(--gray);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        /* =====================================================
+   BUTTON
+===================================================== */
+        
+        button {
+            font-family: Origin;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn {
+            padding: 11px 16px;
+            border-radius: 0px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: .2s ease;
+        }
+        
+        .btn-primary {
+            background: var(--red);
+            color: white;
+            box-shadow: 0 8px 20px rgba(158, 158, 158, 0.685);
+        }
+        
+        .btn-primary:hover {
+            background: var(--red-dark);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #f1f1f3;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e4e4e7;
+        }
+        /* =====================================================
+   MAIN
+===================================================== */
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 20px 60px;
+        }
+        /* =====================================================
+   INTRO
+===================================================== */
+        
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+        
+        .intro-label {
+            color: var(--red);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-family: Origin;
+        }
+        
+        .intro h1 {
+            margin-top: 8px;
+            font-size: clamp(30px, 5vw, 50px);
+            font-family: Origin;
+            line-height: 1.05;
+        }
+        
+        .intro p {
+            color: var(--gray);
+            font-size: 13px;
+            font-family: Origin;
+            line-height: 1;
+            margin-top: 12px;
+        }
+        /* =====================================================
+   WORKSPACE
+===================================================== */
+        
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+        /* =====================================================
+   CONTROL PANEL
+===================================================== */
+        
+        .control-panel {
+            background: rgb(15, 15, 15);
+            border: 1px solid var(--border);
+            padding: 20px;
+        }
+        
+        .panel-title h2 {
+            font-size: 16px;
+            color: white;
+            font-weight: normal;
+            padding-bottom: 3px;
+            line-height: 1;
+        }
+        
+        .panel-title p {
+            color: white;
+            font-size: 50px;
+            margin-top: 5px;
+            line-height: 1;
+            font-family: origin;
+        }
+        /* =====================================================
+   UPLOAD
+===================================================== */
+        
+        .upload-area {
+            width: 100%;
+            min-height: 170px;
+            margin: 18px 0;
+            padding: 20px;
+            border: 2px dashed #d8d8dc;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--red);
+            background: #777777;
+        }
+        
+        .upload-area input {
+            display: none;
+        }
+        
+        .upload-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #cfcfcf;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .upload-area strong {
+            font-size: 20px;
+            font-weight: medium;
+        }
+        
+        .upload-area span {
+            color: rgb(19, 19, 19);
+            font-size: 10px;
+            margin-top: 5px;
+        }
+        
+        .upload-area small {
+            color: #636363;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+        /* =====================================================
+   CONTROL
+===================================================== */
+        
+        .control {
+            padding: 15px 0;
+            border-top: 1px solid var(--border);
+        }
+        
+        .control-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 9px;
+        }
+        
+        .control-header label {
+            font-size: 12px;
+            font-weight: medium;
+            color: rgb(250, 250, 250);
+        }
+        
+        .control-header output {
+            color: rgb(250, 250, 250);
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            accent-color: white;
+            cursor: pointer;
+        }
+        /* =====================================================
+   BUTTON CONTROL
+===================================================== */
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 7px;
+        }
+        
+        .button-grid button {
+            padding: 10px 5px;
+            font-size: 10px;
+            color: rgb(15, 15, 15);
+        }
+        /* =====================================================
+   TIPS
+===================================================== */
+        
+        .tips {
+            margin-top: 17px;
+            padding: 13px;
+            background: #ffffff;
+        }
+        
+        .tips strong {
+            color: var(--red);
+            font-size: 15px;
+        }
+        
+        .tips p {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+        /* =====================================================
+   PREVIEW
+===================================================== */
+        
+        .preview-panel {
+            background: rgb(19, 19, 19);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        
+        .preview-header {
+            min-height: 72px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .preview-header h2 {
+            font-size: 16px;
+            font-family: origin;
+            color: #e9e9e9;
+            font-weight: normal;
+        }
+        
+        .preview-header p {
+            color: #e9e9e9;
+            font-size: 10px;
+            margin-top: 4px;
+            font-weight: normal;
+        }
+        
+        .status {
+            background: #e9e9e9;
+            color: #000000;
+            padding: 7px 11px;
+            font-size: 9px;
+            font-weight: medium;
+            line-height: 1;
+        }
+        
+        .status.ready {
+            background: #e6f8eb;
+            color: #238143;
+        }
+        /* =====================================================
+   CANVAS AREA
+===================================================== */
+        
+        .preview-area {
+            min-height: 680px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient( circle, #ffffff, #f0f0f2);
+        }
+        
+        .canvas-wrapper {
+            width: min(100%, 560px);
+            filter: drop-shadow( 0 18px 35px rgba(0, 0, 0, .15));
+        }
+        
+        canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            touch-action: none;
+            user-select: none;
+        }
+        /* =====================================================
+   MOBILE DOWNLOAD
+===================================================== */
+        
+        .mobile-download {
+            display: none;
+            padding: 0 18px 18px;
+        }
+        
+        .download-full {
+            width: 100%;
+        }
+        /* =====================================================
+   FOOTER
+===================================================== */
+        
+        footer {
+            padding: 18px 5%;
+            background: white;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 10px;
+            font-family: origin;
+        }
+        /* =====================================================
+   TABLET
+===================================================== */
+        
+        @media(max-width:900px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+            .control-panel {
+                order: 2;
+            }
+            .preview-panel {
+                order: 1;
+            }
+            .preview-area {
+                min-height: auto;
+                padding: 18px;
+            }
+            .canvas-wrapper {
+                max-width: 520px;
+            }
+            .mobile-download {
+                display: block;
+            }
+        }
+        /* =====================================================
+   MOBILE
+===================================================== */
+        
+        @font-face {
+            font-family: 'Origin';
+            src: url('Origin.woff2') format('woff2'), url('Origin-RegularDisplay.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @media(max-width:600px) {
+            .navbar {
+                height: 64px;
+            }
+            .container {
+                padding: 28px 12px 35px;
+            }
+            .brand-text strong {
+                font-size: 11px;
+                font-family: 'Origin';
+            }
+            .brand-text span {
+                font-size: 8px;
+                font-family: 'Origin';
+            }
+            .nav-buttons .btn-secondary {
+                display: none;
+            }
+            .nav-buttons .btn-primary {
+                padding: 9px 12px;
+                font-size: 10px;
+                font-family: 'Origin';
+            }
+            .intro {
+                margin-bottom: 23px;
+            }
+            .intro h1 {
+                font-size: 30px;
+                font-family: 'Origin';
+            }
+            .intro p {
+                font-size: 11px;
+                font-family: 'Origin';
+            }
+            .workspace {
+                gap: 12px;
+            }
+            .control-panel {
+                padding: 15px;
+            }
+            .preview-header {
+                padding: 13px;
+            }
+            .preview-header p {
+                font-size: 9px;
+                font-family: 'Origin';
+            }
+            .status {
+                font-size: 8px;
+                font-family: 'Origin';
+            }
+            .preview-area {
+                padding: 10px;
+            }
+            .steps {
+                gap: 6px;
+            }
+            .step {
+                padding: 9px 7px;
+                justify-content: center;
+            }
+            .step-number {
+                width: 26px;
+                height: 26px;
+            }
+            .step strong {
+                font-size: 9px;
+                font-family: 'Origin';
+            }
+            .step span {
+                display: none;
+            }
+            footer {
+                font-size: 8px;
+                font-family: 'Origin';
+            }
+        }
+        /* Contact & Copyright */
+        
+        .app-footer {
+            border-top: 1px solid #2b2b2b;
+            background-color: #131313;
+            padding: 50px 0 20px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .footer-brand p {
+            font-size: 1rem;
+            color: #777777;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            color: #ffffff;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-copyright {
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+            padding: 20px 24px 0 24px;
+            border-top: 1px solid #2b2b2b;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #858585;
+        }
+        /* ========================= Teks berjalan ================================ */
+        /* Container Utama */
+        
+        .ticker-container {
+            width: 100%;
+            overflow: hidden;
+            /* Sembunyikan bagian yang keluar dari layar */
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        /* Track Berjalan */
+        
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            /* Panjang trek menyesuaikan total isi */
+            animation: scroll 20s linear infinite;
+            /* Kecepatan animasi (20 detik) */
+        }
+        /* Hentikan animasi saat kursor diarahkan ke elemen (Opsional) */
+        
+        .ticker-container:hover .ticker-track {
+            animation-play-state: paused;
+        }
+        /* Setiap Elemen Logo + Teks */
+        
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            /* Jarak antara logo dan teks */
+            margin-right: 50px;
+            /* Jarak antar grup perusahaan */
+            white-space: nowrap;
+            /* Mencegah teks turun ke bawah */
+        }
+        /* Styling Gambar Logo */
+        
+        .ticker-item img {
+            height: 35px;
+            /* Sesuaikan tinggi logo */
+            width: auto;
+            object-fit: contain;
+        }
+        /* Styling Teks */
+        
+        .ticker-item span {
+            font-family: origin;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333333;
+        }
+        /* Keyframes Animasi Pergeseran */
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+                /* Geser sejauh 50% (setengah dari total lebar trek) */
+            }
+        }
+    </style>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------------------------------- HTML ------------------------------------------------------------->
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="navbar-container">
+        <div class="brand">
+            <div class="brand-logo">
+                <img width="30px" height="30px" src="Logo Delaih Putih.svg">
+            </div>
+            <div class="brand-text">
+                <strong>Delaih Twibon</strong>
+                <span>By. Julam Carjer</span>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn btn-secondary" id="resetAll">Reset</button>
+            <button class="btn btn-primary" id="downloadTop">Download Twibon</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+    <!-- INTRO -->
+    <section class="intro">
+        <span class="intro-label">Delaih Twibon</span>
+        <h1>Jesss lah Di brukna Fotone</h1>
+        <p>Tambahkan foto kamu, atur posisi, kemudian download Twibbonya.</p>
+    </section>
+
+
+
+    <!-- Logo FanArt -->
+    <!-- Bagian Running Text & Logo Perusahaan -->
+    <div class="ticker-container">
+        <div class="ticker-track">
+            <!-- Set 1 (Item utama) -->
+            <div class="ticker-item">
+                <img src="Logo FA.png" alt="Logo 1">
+                <span>Fantastic ART</span>
+            </div>
+            <div class="ticker-item">
+                <img src="Logo UMBS.png" alt="Logo 2">
+                <span>Universitas Muhammadiyah Brebes</span>
+            </div>
+            <div class="ticker-item">
+                <img src="Logo Delaih Hitam.svg" alt="Logo 3">
+                <span>Delaih Twibon By.Julam Carjer</span>
+            </div>
+
+            <!-- Set 2 (Duplikasi persis Set 1 untuk menciptakan efek seamless loop) -->
+            <div class="ticker-item">
+                <img src="Logo FA.png" alt="Logo 1">
+                <span>Fantastic ART</span>
+            </div>
+            <div class="ticker-item">
+                <img src="Logo UMBS.png" alt="Logo 2">
+                <span>Universitas Muhammadiyah Brebes</span>
+            </div>
+            <div class="ticker-item">
+                <img src="Logo Delaih Hitam.svg" alt="Logo 3">
+                <span>Delaih Twibon By.Julam Carjer</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- WORKSPACE -->
+    <section class="workspace">
+
+        <!-- CONTROL -->
+        <aside class="control-panel">
+            <div class="panel-title">
+                <h2>Tambahkan Foto</h2>
+                <p>Pilih foto yang ingin Digunakan.</p>
+            </div>
+
+            <!-- UPLOAD -->
+            <label class="upload-area" for="photoInput">
+                    <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp">
+                    <div class="upload-icon">+</div>
+                    <strong>Upload Foto</strong>
+                    <span>JPG, PNG atau WEBP</span>
+                    <small>Maksimal 15 MB</small>
+                </label>
+
+            <!-- ZOOM -->
+            <div class="control">
+                <div class="control-header">
+                    <label>Zoom</label>
+                    <output id="zoomValue">100%</output>
+                </div>
+                <input type="range" id="zoom" min="50" max="250" value="100">
+            </div>
+
+            <!-- ROTASI -->
+            <div class="control">
+                <div class="control-header">
+                    <label>Rotasi</label>
+                    <output id="rotateValue">0°</output>
+                </div>
+                <input type="range" id="rotate" min="-180" max="180" value="0">
+            </div>
+
+            <!-- BUTTON -->
+            <div class="button-grid">
+                <button class="btn btn-secondary" id="fitPhoto">Fit</button>
+                <button class="btn btn-secondary" id="centerPhoto">Center</button>
+                <button class="btn btn-secondary" id="resetPhoto">Reset Foto</button>
+            </div>
+
+            <!-- TIPS -->
+            <div class="tips">
+                <strong>Tips</strong>
+                <p>Jika Twibbon belum muncul coba refresh browsernya dulu.</p>
+                <p>Kalau sudah di refresh tetap tidak muncul maka gunakanlah mode Desktop</p>
+            </div>
+        </aside>
+
+        <!-- PREVIEW -->
+        <section class="preview-panel">
+            <div class="preview-header">
+                <div>
+                    <h2>Preview Twibbon</h2>
+                    <p>Atur foto sampai posisinya sesuai.</p>
+                </div>
+                <div class="status" id="status">Belum ada foto</div>
+            </div>
+
+            <!-- CANVAS -->
+            <div class="preview-area">
+                <div class="canvas-wrapper">
+                    <canvas id="canvas" width="797" height="1058"></canvas>
+                </div>
+            </div>
+
+            <!-- MOBILE DOWNLOAD -->
+            <div class="mobile-download">
+                <button class="btn btn-primary download-full" id="downloadBottom">Download Twibbon</button>
+            </div>
+        </section>
+
+    </section>
+
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h3>DELAIH TWIBON</h3>
+            <p>Saran dan Masukan, silahkan hubungi kami</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="mailto:carjerjulam@gmail.com"><i class="fa-regular fa-envelope"></i> Email: carjerjulam@gmail.com</a>
+            <a href="https://instagram.com/julam_carjer" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram: @julam_carjer</a>
+            <a href="https://github.com/JulamCarjer" target="_blank"><i class="fa-brands fa-github"></i> GitHub: https://github.com/JulamCarjer</a>
+        </div>
+
+        <span>© 2026 DELAIH BY.JULAM CARJER. All rights reserved.</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    /* UKURAN CANVAS */
+    const CANVAS_WIDTH = 797;
+    const CANVAS_HEIGHT = 1058;
+
+    /* TEMPLATE TWIBBON */
+    const template = new Image();
+    template.src = "twibon-makrab.png";
+
+    /* =====================================================
+       AREA FOTO (FRAME)
+       Telah disesuaikan agar full lebar dan tinggi
+    ===================================================== */
+    const FRAME = {
+        x: 0,
+        y: 100,
+        width: CANVAS_WIDTH,
+        height: 800
+    };
+
+    /* ELEMENT */
+    const photoInput = document.getElementById("photoInput");
+    const zoomInput = document.getElementById("zoom");
+    const rotateInput = document.getElementById("rotate");
+    const zoomValue = document.getElementById("zoomValue");
+    const rotateValue = document.getElementById("rotateValue");
+    const status = document.getElementById("status");
+
+    /* FOTO & STATE */
+    let photo = null;
+    let photoState = {
+        x: FRAME.x + FRAME.width / 2,
+        y: FRAME.y + FRAME.height / 2,
+        scale: 1,
+        baseScale: 1,
+        rotation: 0
+    };
+
+    /* DRAG STATE */
+    let isDragging = false;
+    let lastPointer = {
+        x: 0,
+        y: 0
+    };
+
+    function setStatus(text, ready = false) {
+        status.textContent = text;
+        status.classList.toggle("ready", ready);
+    }
+
+    function calculateFitScale() {
+        if (!photo) return 1;
+        const scaleX = FRAME.width / photo.naturalWidth;
+        const scaleY = FRAME.height / photo.naturalHeight;
+        return Math.max(scaleX, scaleY);
+    }
+
+    function fitPhoto() {
+        if (!photo) return;
+        photoState.baseScale = calculateFitScale();
+        photoState.scale = photoState.baseScale;
+        photoState.x = FRAME.x + FRAME.width / 2;
+        photoState.y = FRAME.y + FRAME.height / 2;
+        photoState.rotation = 0;
+        zoomInput.value = 100;
+        rotateInput.value = 0;
+        updateValues();
+        draw();
+    }
+
+    function centerPhoto() {
+        if (!photo) return;
+        photoState.x = FRAME.x + FRAME.width / 2;
+        photoState.y = FRAME.y + FRAME.height / 2;
+        draw();
+    }
+
+    function resetPhoto() {
+        fitPhoto();
+    }
+
+    function updateValues() {
+        if (!photo) {
+            zoomValue.value = "100%";
+            rotateValue.value = "0°";
+            return;
+        }
+        const zoomPercent = Math.round((photoState.scale / photoState.baseScale) * 100);
+        zoomValue.value = zoomPercent + "%";
+        rotateValue.value = photoState.rotation + "°";
+    }
+
+    function drawPhoto() {
+        if (!photo) return;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(FRAME.x, FRAME.y, FRAME.width, FRAME.height);
+        ctx.clip();
+
+        ctx.translate(photoState.x, photoState.y);
+        ctx.rotate(photoState.rotation * Math.PI / 180);
+        ctx.scale(photoState.scale, photoState.scale);
+
+        ctx.drawImage(photo, -photo.naturalWidth / 2, -photo.naturalHeight / 2);
+        ctx.restore();
+    }
+
+    function drawPlaceholder() {
+        ctx.save();
+        ctx.fillStyle = "rgba(255,255,255,.94)";
+        ctx.fillRect(FRAME.x, FRAME.y, FRAME.width, FRAME.height);
+
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#777";
+        ctx.font = "bold 18px Arial";
+        ctx.fillText("UPLOAD FOTO", FRAME.x + FRAME.width / 2, FRAME.y + FRAME.height / 2);
+
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "#999";
+        ctx.fillText("Foto akan ditempatkan di sini", FRAME.x + FRAME.width / 2, FRAME.y + FRAME.height / 2 + 25);
+        ctx.restore();
+    }
+
+    function drawTemplate() {
+        if (template.complete && template.naturalWidth > 0) {
+            ctx.drawImage(template, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        if (photo) {
+            drawPhoto();
+        } else {
+            drawPlaceholder();
+        }
+        drawTemplate();
+    }
+
+    function loadPhoto(file) {
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+            alert("File harus berupa gambar.");
+            return;
+        }
+        if (file.size > 15 * 1024 * 1024) {
+            alert("Ukuran foto maksimal 15 MB.");
+            return;
+        }
+
+        const url = URL.createObjectURL(file);
+        const image = new Image();
+
+        image.onload = function() {
+            photo = image;
+            fitPhoto();
+            setStatus("Foto Siap", true);
+            URL.revokeObjectURL(url);
+        };
+
+        image.onerror = function() {
+            alert("Foto gagal dibaca.");
+            URL.revokeObjectURL(url);
+        };
+
+        image.src = url;
+    }
+
+    photoInput.addEventListener("change", function(event) {
+        loadPhoto(event.target.files[0]);
+    });
+
+    zoomInput.addEventListener("input", function() {
+        if (!photo) return;
+        const percent = Number(zoomInput.value);
+        photoState.scale = photoState.baseScale * (percent / 100);
+        updateValues();
+        draw();
+    });
+
+    rotateInput.addEventListener("input", function() {
+        if (!photo) return;
+        photoState.rotation = Number(rotateInput.value);
+        updateValues();
+        draw();
+    });
+
+    function getPointerPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: (event.clientX - rect.left) * (CANVAS_WIDTH / rect.width),
+            y: (event.clientY - rect.top) * (CANVAS_HEIGHT / rect.height)
+        };
+    }
+
+    canvas.addEventListener("pointerdown", function(event) {
+        if (!photo) return;
+        isDragging = true;
+        canvas.setPointerCapture(event.pointerId);
+        lastPointer = getPointerPosition(event);
+    });
+
+    canvas.addEventListener("pointermove", function(event) {
+        if (!isDragging || !photo) return;
+        const current = getPointerPosition(event);
+        const dx = current.x - lastPointer.x;
+        const dy = current.y - lastPointer.y;
+        photoState.x += dx;
+        photoState.y += dy;
+        lastPointer = current;
+        draw();
+    });
+
+    canvas.addEventListener("pointerup", function() {
+        isDragging = false;
+    });
+    canvas.addEventListener("pointercancel", function() {
+        isDragging = false;
+    });
+
+    canvas.addEventListener("wheel", function(event) {
+        if (!photo) return;
+        event.preventDefault();
+        let value = Number(zoomInput.value);
+        if (event.deltaY < 0) {
+            value += 5;
+        } else {
+            value -= 5;
+        }
+        value = Math.max(50, Math.min(250, value));
+        zoomInput.value = value;
+        zoomInput.dispatchEvent(new Event("input"));
+    }, {
+        passive: false
+    });
+
+    document.getElementById("fitPhoto").addEventListener("click", fitPhoto);
+    document.getElementById("centerPhoto").addEventListener("click", centerPhoto);
+    document.getElementById("resetPhoto").addEventListener("click", resetPhoto);
+
+    function downloadTwibbon() {
+        if (!photo) {
+            alert("Silakan upload foto terlebih dahulu.");
+            return;
+        }
+
+        const EXPORT_SCALE = 3;
+        const exportCanvas = document.createElement("canvas");
+        exportCanvas.width = CANVAS_WIDTH * EXPORT_SCALE;
+        exportCanvas.height = CANVAS_HEIGHT * EXPORT_SCALE;
+
+        const exportCtx = exportCanvas.getContext("2d");
+        exportCtx.imageSmoothingEnabled = true;
+        exportCtx.imageSmoothingQuality = "high";
+        exportCtx.scale(EXPORT_SCALE, EXPORT_SCALE);
+
+        /* Foto */
+        exportCtx.save();
+        exportCtx.beginPath();
+        exportCtx.rect(FRAME.x, FRAME.y, FRAME.width, FRAME.height);
+        exportCtx.clip();
+        exportCtx.translate(photoState.x, photoState.y);
+        exportCtx.rotate(photoState.rotation * Math.PI / 180);
+        exportCtx.scale(photoState.scale, photoState.scale);
+        exportCtx.drawImage(photo, -photo.naturalWidth / 2, -photo.naturalHeight / 2);
+        exportCtx.restore();
+
+        /* Template PNG */
+        exportCtx.drawImage(template, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        /* Download */
+        exportCanvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "Twibbon_PKKMB_2026.png";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }, "image/png");
+    }
+
+    document.getElementById("downloadTop").addEventListener("click", downloadTwibbon);
+    document.getElementById("downloadBottom").addEventListener("click", downloadTwibbon);
+
+    document.getElementById("resetAll").addEventListener("click", function() {
+        photo = null;
+        photoInput.value = "";
+        zoomInput.value = 100;
+        rotateInput.value = 0;
+        photoState = {
+            x: FRAME.x + FRAME.width / 2,
+            y: FRAME.y + FRAME.height / 2,
+            scale: 1,
+            baseScale: 1,
+            rotation: 0
+        };
+        updateValues();
+        setStatus("Belum ada foto", false);
+        draw();
+    });
+
+    template.onload = function() {
+        draw();
+    };
+
+    updateValues();
+    draw();
+</script>
+</body>
+
+</html>
